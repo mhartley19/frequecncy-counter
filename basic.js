@@ -38,9 +38,11 @@ for (let i = 0; i < words.length; i++) {
 
 for (let letter in letterCounts) {  
     const span = document.createElement("span");  
+    let br = document.createElement("br"); 
     const textContent = document.createTextNode('"' + letter + "\": " + letterCounts[letter] + ", ");  
     span.appendChild(textContent);  
     document.getElementById("lettersDiv").appendChild(span);  
+    document.getElementById("lettersDiv").appendChild(br);
 }
 
 
