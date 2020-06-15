@@ -4,6 +4,7 @@ document.getElementById("countButton").onclick = function() {
     typedText = typedText.toLowerCase();  
 // // This changes all the letter to lower case.  
     typedText = typedText.replace(/[^a-z'\s]+/g, "");  
+    words = typedText.split(/\s/);
 // This gets rid of all the characters except letters, spaces, and apostrophes. 
 
 let letterCounts = {};
@@ -15,12 +16,13 @@ for (let i = 0; i < typedText.length; i++) {
     } else {  
         letterCounts[currentLetter]++;  
     }
-  
 }
 
+
 let wordCounts = {};
-for (let i = 0; i < typedText; i++) {
-    currentWord = typedText;
+for (let i = 0; i < words.length; i++) {
+    currentWord = words [i]
+    console.log(currentWord)
 
     if (wordCounts[currentWord] === undefined) {
         wordCounts[currentWord] = 1;  
@@ -39,15 +41,17 @@ for (let letter in letterCounts) {
     const textContent = document.createTextNode('"' + letter + "\": " + letterCounts[letter] + ", ");  
     span.appendChild(textContent);  
     document.getElementById("lettersDiv").appendChild(span);  
-    words = typedText.split(/\s/);
 }
+
 
 for (let word in wordCounts) {  
     const span = document.createElement("span");  
-    const wordContent = document.createTextNode('"' + word + "\": " + wordCounts[word] + ", ");  
-    span.appendChild(wordContent);  
+    let br = document.createElement("br"); 
+    const wordContent = document.createTextNode('"' + word + "\": " + wordCounts[word] + ", "); 
+    
+    span.appendChild(wordContent); 
+    // br.appendChild(wordContent) ;
     document.getElementById("wordsDiv").appendChild(span);  
-    words = typedText.split(/\s/);
+    document.getElementById("wordsDiv").appendChild(br);
 }
-
 }
